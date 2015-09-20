@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="GDGLegon">
 
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body ng-controller="AppController">
   <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -23,11 +23,43 @@
   <!-- Main Content -->
   <div class="container">
     <center>
-      <div class="margin-top">
+      <!-- <div class="margin-top">
         <h1>GDG-Legon Starter Template</h1>
         <p class="lead">
           Wait? Where's the heading???
         </p>
+      </div> -->
+
+      <div class="bigger-margin">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">@</span>
+              <input type="text" class="form-control" ng-model="userHandle" placeholder="What's your twitter handle?" aria-describedby="basic-addon1">
+            </div>
+            <br/>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">#</span>
+              <input type="text" class="form-control" ng-model="userColour" placeholder="What's your favorite color?" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-success btn-block" ng-click="submit(userHandle, userColour)">Upload to NSA...</button>
+          </div>
+        </div>
+        <div class="panel panel-default" ng-show="colourGenerated">
+          <div class="panel-body">
+            <p class="lead">
+              Hi there {{userHandle}} !!!!!. I hear your favorite color is <span style="color:#fff;" ng-style="{'background-color' : userColour}">{{userColour | uppercase}}</span>?
+            </p>
+            <p class="lead" ng-show="different">
+              Well that sucks, mine is <span style="color:#fff;" ng-style="{'background-color' : generatedColor.hex}">{{generatedColor.name | uppercase}}</span>, waaaay better than {{userColour | uppercase}}.
+            </p>
+            <p class="lead" ng-show="!different">
+              Me too! <span style="color:#fff;" ng-style="{'background-color' : userColour}">{{generatedColor.name | uppercase}}</span> is an awesome colour.
+            </p>
+          </div>
+        </div>
       </div>
     </center>
   </div>
